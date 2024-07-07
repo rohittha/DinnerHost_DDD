@@ -5,7 +5,9 @@ using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Realtor.Application.Authentication.Commands.Register;
 using Realtor.Application.Authentication.Queries.Login;
+using Realtor.Application.Property_Unit.Commands.Create;
 using Realtor.Application.Property_Unit.Common;
 using Realtor.Application.Property_Unit.Queries.SearchProperties;
 using Realtor.Contracts.Authentication;
@@ -33,17 +35,20 @@ namespace Realtor.API.Controllers
             var searchPropertiesResult = await _mediatr.Send(query);
 
             // Map list of Result
-            //var dest = searchPropertiesResult.Adapt<List<SearchPropertiesResponse>>();
-            //var result = searchPropertiesResult.Match(result => Ok(_mapper.Map<List<SearchPropertiesResponse>>(result)),
-            //    errors => Problem(errors));
-            var result = searchPropertiesResult.Match(result => Ok(_mapper.Map<SearchPropertyResponse>(result)),
+            var result = searchPropertiesResult.Match(result => Ok(_mapper.Map<List<SearchPropertyResponse>>(result)),
                 errors => Problem(errors));
-
-
             return result;
-            //HttpContext context = HttpContext;
-            //return Ok(Array.Empty<string>());
         }
 
+        [HttpPost]
+        [Route("create")]
+        public async Task<IActionResult> CreateProperty(CreatePropertyRequest request)
+        {
+            var command = _mapper.Map<CreatePropertyCommand>(request);
+            ErrorOr<CreatePropertyResult> result = await _mediatr.Send(command);
+
+            return result.Match(createResult => Ok(_mapper.Map<CreatePropertyResponse>(createResult)),
+                errors => Problem(errors));
+        }
     }
 }

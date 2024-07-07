@@ -1,8 +1,7 @@
 namespace Realtor.Contracts.PropertyUnit
 {
     public record CreatePropertyRequest
-    (
-         int? Id ,             
+    (            
          string? Description ,
          string? Type ,
          string? Address ,

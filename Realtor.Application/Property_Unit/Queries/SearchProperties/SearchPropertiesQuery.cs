@@ -17,6 +17,6 @@ namespace Realtor.Application.Property_Unit.Queries.SearchProperties
         , string? PostalCode
         , string? Country
         , string? Phone
-    ) : IRequest<ErrorOr<SearchPropertiesResult>>;
-    //) : IRequest<ErrorOr<List<SearchPropertiesResult>>>;
+    ) : IRequest<ErrorOr<List<SearchPropertiesResult>>>;
+    //) : IRequest<ErrorOr<SearchPropertiesResult>>;
 }

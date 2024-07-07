@@ -1,17 +1,17 @@
 @host=https://localhost:7283
 
-POST {{host}}/properties/all
+POST {{host}}/properties/create
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZWExZjk1NS0wYWI5LTRhMmEtODdhOS02MzI5ODZkMjgyNjQiLCJnaXZlbl9uYW1lIjoiVG9tIiwiZmFtaWx5X25hbWUiOiJGZWx0b24iLCJqdGkiOiJmYjYzMjgzZC02ZWQ0LTQwMWMtYTM3Ni1kNDJkYjExNTBmMmUiLCJleHAiOjE3MjAzNjg2MDYsImlzcyI6IlJlYWx0b3JUZXN0MSIsImF1ZCI6IlJlYWx0b3JUZXN0MV9Vc2VycyJ9.ZjbQrdBtwqfPvhUfl0--wkSy8_fZ9kZcm0lSVvL6F9k
 Content-Type: application/json
 
 {
-  "description": "3 BHK Condo",
+  "description": "4 BHK House",
   "type": "Residential",
-  "address": "102 Heaven St.",
+  "address": "666 Hell St.",
   "address2": "",
-  "city": "Calgary",
-  "region": "Alberta",
-  "postalCode": "A989B3",
+  "city": "Ottawa",
+  "region": "Ontario",
+  "postalCode": "H35O2W",
   "country": "Canada",
-  "phone": "9876543214"
+  "phone": "9876543215"
 }

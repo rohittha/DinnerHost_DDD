@@ -1,13 +1,13 @@
 ﻿using Mapster;
 using MapsterMapper;
-using Microsoft.Identity.Client;
+using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace Realtor.API.Common.Mapping
+namespace Realtor.Application.Common.Mapping
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddMappings(this IServiceCollection services)
+        public static IServiceCollection AddApplicationMappings(this IServiceCollection services)
         {
             var config = TypeAdapterConfig.GlobalSettings;
             config.Scan(Assembly.GetExecutingAssembly());
