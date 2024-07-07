@@ -1,8 +1,8 @@
 namespace Realtor.Contracts.PropertyUnit
 {
-    public record CreatePropertyRequest
+    public record CreatePropertyResponse
     (
-         int? Id ,             
+         //int? Id ,             // User will not be passing ID for a new record
          string? Description ,
          string? Type ,
          string? Address ,

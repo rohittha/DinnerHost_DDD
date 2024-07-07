@@ -11,6 +11,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Options;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
+using Realtor.Infrastructure.Data;
+using Realtor.Application.Services;
 
 namespace Realtor.Infrastructure
 {
@@ -20,9 +23,17 @@ namespace Realtor.Infrastructure
             ConfigurationManager configuration
             )
         {
+            services.AddDbContext<AppDbContext>(options =>
+            options.UseSqlServer("Server=DESKTOP-KSAT5NM\\RTSQL;Database=RealtorsDb1;Trusted_Connection=True;Encrypt=true;TrustServerCertificate=true;"));
+            //services.AddDbContext<AppDbContext>(options =>
+            //options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+
             services.AddAuth(configuration);
             services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPropertyUnitRepository, PropertyUnitRepository>();
             return services;
         }
 

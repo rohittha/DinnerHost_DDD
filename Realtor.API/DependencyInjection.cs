@@ -2,8 +2,6 @@
 //using Realtor.API.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Realtor.API.Common.Errors;
-using Realtor.API.Repository;
-using Realtor.API.Services;
 using Realtor.Common.Mapping;
 
 namespace Realtor.API
@@ -16,7 +14,7 @@ namespace Realtor.API
             services.AddControllers();
             services.AddMappings();
             services.AddSingleton<ProblemDetailsFactory, RealtorsProblemDetailsFactory>();
-            services.AddScoped<IPropertyRepository, PropertyRepository>();
+            //services.AddScoped<IPropertyRepository, PropertyRepository>();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
             return services;

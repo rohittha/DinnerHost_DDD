@@ -1,6 +1,12 @@
-namespace Realtor.Contracts.PropertyUnit
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Realtor.Application.Property_Unit.Common
 {
-    public record PropertyResponse
+    public record SearchPropertiesResult
     (
          int Id 
         , string? Description 
@@ -13,5 +19,6 @@ namespace Realtor.Contracts.PropertyUnit
         , string? PostalCode 
         , string? Country 
         , string? Phone 
+
     );
 }

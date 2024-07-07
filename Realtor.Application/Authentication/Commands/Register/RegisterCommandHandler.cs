@@ -25,6 +25,7 @@ namespace Realtor.Application.Authentication.Commands.Register
         }
         public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand command, CancellationToken cancellationToken)
         {
+            await Task.CompletedTask;
             //1. Check if user exists
             if (_userRepository.GetUserByEmail(command.Email) is not null)
             {
@@ -34,13 +35,20 @@ namespace Realtor.Application.Authentication.Commands.Register
             }
 
             //2. Register a NEW user
-            var user = new User
-            {
-                FirstName = command.FirstName,
-                LastName = command.LastName,
-                Email = command.Email,
-                Password = command.Password,
-            };
+            //var user = new User
+            //{
+            //    FirstName = command.FirstName,
+            //    LastName = command.LastName,
+            //    Email = command.Email,
+            //    Password = command.Password,
+            //};
+
+            var user = User.Create(
+                command.FirstName,
+                command.LastName,
+                command.Email,
+                command.Password);
+
 
             _userRepository.Add(user);
 

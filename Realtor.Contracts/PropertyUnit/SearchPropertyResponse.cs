@@ -1,8 +1,8 @@
 namespace Realtor.Contracts.PropertyUnit
 {
-    public record GetPropertiesRequest
+    public record SearchPropertyResponse
     (
-         int? Id 
+         int Id 
         , string? Description 
         , string? Type 
         , string? Address 

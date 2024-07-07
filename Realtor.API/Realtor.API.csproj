@@ -10,12 +10,16 @@
   <ItemGroup>
     <Compile Remove="Filters\**" />
     <Compile Remove="Middleware\**" />
+    <Compile Remove="Migrations_Old\**" />
     <Content Remove="Filters\**" />
     <Content Remove="Middleware\**" />
+    <Content Remove="Migrations_Old\**" />
     <EmbeddedResource Remove="Filters\**" />
     <EmbeddedResource Remove="Middleware\**" />
+    <EmbeddedResource Remove="Migrations_Old\**" />
     <None Remove="Filters\**" />
     <None Remove="Middleware\**" />
+    <None Remove="Migrations_Old\**" />
   </ItemGroup>
 
   <ItemGroup>

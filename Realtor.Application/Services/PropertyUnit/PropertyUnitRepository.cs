@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Realtor.Application.Services.PropertyUnit
+namespace Realtor.Application.Services
 {
-    public class PropertyUnitRepository : IPropertyUnitRepository
-    {
+    //public class PropertyUnitRepository : IPropertyUnitRepository
+    //{
         //private readonly AppDbContext _context;
         //public PropertyRepository(AppDbContext context)
         //{
@@ -52,5 +52,5 @@ namespace Realtor.Application.Services.PropertyUnit
         //    await _context.SaveChangesAsync();
         //    return existingProperty;
         //}
-    }
+    //}
 }
