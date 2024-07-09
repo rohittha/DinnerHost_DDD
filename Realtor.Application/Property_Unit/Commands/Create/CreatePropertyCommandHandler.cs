@@ -22,10 +22,11 @@ namespace Realtor.Application.Property_Unit.Commands.Create
     public class CreatePropertyCommandHandler : IRequestHandler<CreatePropertyCommand, ErrorOr<CreatePropertyResult>>
     {
         private readonly IMapper _mapper;
-        IPropertyUnitRepository _propertyUnitRepository;
+        private readonly IPropertyUnitRepository _propertyUnitRepository;
+
         public CreatePropertyCommandHandler(IPropertyUnitRepository propertyUnitRepository, IMapper mapper)
         {
-            _propertyUnitRepository = propertyUnitRepository;
+            _propertyUnitRepository = propertyUnitRepository;  
             _mapper = mapper;
         }
         public async Task<ErrorOr<CreatePropertyResult>> Handle(CreatePropertyCommand request, CancellationToken cancellationToken)
@@ -33,7 +34,7 @@ namespace Realtor.Application.Property_Unit.Commands.Create
             var propertyUnit = _mapper.Map<PropertyUnit>(request);
             // TODO Add error handling and validation        
 
-            var result = await _propertyUnitRepository.CreatePropertyAsync(propertyUnit);
+            var result = await _propertyUnitRepository.Add(propertyUnit);
             var createPropertyResult = _mapper.Map<CreatePropertyResult>(result);
             return createPropertyResult;
         }

@@ -32,7 +32,7 @@ namespace Realtor.Application.Property_Unit.Queries.SearchProperties
 
         public async Task<ErrorOr<List<SearchPropertiesResult>>> Handle(SearchPropertiesQuery request, CancellationToken cancellationToken)
         {
-            var propertyList = await _propertyRepository.GetPropertiesAsync();
+            var propertyList = await _propertyRepository.All();
 
             if (propertyList is not List<PropertyUnit>) // TODO check how this works
             {

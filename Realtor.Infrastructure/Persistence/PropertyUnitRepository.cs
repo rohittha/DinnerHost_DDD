@@ -1,56 +1,17 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Realtor.Application.Services;
 using Realtor.Domain.Entities;
 using Realtor.Infrastructure.Data;
 
 namespace Realtor.Infrastructure.Persistence
 {
-    public class PropertyUnitRepository : IPropertyUnitRepository
+    public class PropertyUnitRepository : GenericRepository<PropertyUnit>, IPropertyUnitRepository
     {
-        private readonly AppDbContext _context;
-        public PropertyUnitRepository(AppDbContext context)
+        public PropertyUnitRepository(AppDbContext context) : base(context)
         {
-            _context = context;
         }
 
-        public async Task<List<PropertyUnit>> GetPropertiesAsync()
-        {
-            var propList = await _context.PropertyUnits.ToListAsync();
-            return propList;
-        }
-
-        public async Task<PropertyUnit> CreatePropertyAsync(PropertyUnit property)
-        {
-            await _context.PropertyUnits.AddAsync(property);
-            await _context.SaveChangesAsync();
-            return property;
-        }
-
-        public async Task<PropertyUnit?> GetPropertyAsync(int Id)
-        {
-            var property = await _context.PropertyUnits.Where(p => p.Id == Id).FirstOrDefaultAsync();
-            return property;
-        }
-
-        public async Task<PropertyUnit?> UpdatePropertyAsync(int Id, PropertyUnit property)
-        {
-            var existingProperty = await _context.PropertyUnits.FirstOrDefaultAsync(u => u.Id == Id);
-            if (existingProperty == null) return null;
-
-            existingProperty.Phone = property.Phone;
-            existingProperty.Address = property.Address;
-            existingProperty.Address2 = property.Address2;
-            existingProperty.Region = property.Region;
-            existingProperty.City = property.City;
-            existingProperty.Country = property.Country;
-            existingProperty.Description = property.Description;
-            existingProperty.PostalCode = property.PostalCode;
-            existingProperty.Type = property.Type;
-
-            //_context.PropertyUnits.Update(existingProperty);
-            await _context.SaveChangesAsync();
-            return existingProperty;
-        }
     }
 }
